@@ -1,15 +1,15 @@
 import { PaperProvider, Text, Switch } from 'react-native-paper';
 
 const App = () => {
-  const nom = () => {
+  const nom = (textAMostrar) => {
     return (
-      <Text variant='displayLarge'>Ausiàs</Text>
+      <Text variant='displayLarge'>{textAMostrar}</Text>
     );
   }
 
   return (
     <PaperProvider>
-      {nom()}
+      {nom("Ausiàs")}
     </PaperProvider>
   );
 }
