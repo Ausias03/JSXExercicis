@@ -1,15 +1,21 @@
 import { PaperProvider, Text, Switch } from 'react-native-paper';
 
 const App = () => {
-  const nom = (textAMostrar) => {
+  const estilText = {
+    fontWeight: 'bold',
+    color: '#13802e',
+    fontSize: 40,
+  };
+
+  const nom = (textAMostrar, estilText) => {
     return (
-      <Text variant='displayLarge'>{textAMostrar}</Text>
+      <Text style={estilText}>{textAMostrar}</Text>
     );
   }
 
   return (
     <PaperProvider>
-      {nom("Ausiàs")}
+      {nom("Ausiàs", estilText)}
     </PaperProvider>
   );
 }
