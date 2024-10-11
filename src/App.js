@@ -1,4 +1,4 @@
-import { PaperProvider, Text, TextInput } from 'react-native-paper';
+import { PaperProvider, Text, TextInput, Button } from 'react-native-paper';
 import { View } from 'react-native';
 import { useState } from 'react';
 
@@ -34,29 +34,44 @@ const App = () => {
     }
   };
 
-  const estil = 'florida';
+  const estil = 'upv';
+
+  const isAdmin = true;
+
+  const button = (isAdmin) => {
+    return (
+      isAdmin &&
+      <Button
+        icon='format-list-bulleted'
+        mode='contained'
+        buttonColor='#6200ee'
+        style={{ borderRadius: 5 }}
+      >INFORMES</Button>
+    );
+  };
 
   const dades = (arrayElements, estil, stylesContainer) => {
     return (
       <View style={estil === 'florida' ? stylesContainer.florida : stylesContainer.upv}>
-      {arrayElements.map((elem, pos) => (
-        <TextInput
-          label={elem}
-          key={pos}
-          placeholder={elem}
-          placeholderTextColor={estil === 'florida' ? 'white' : 'orange'}
-          textColor={estil === 'florida' ? 'white' : 'orange'}
-        ></TextInput>
+        {arrayElements.map((elem, pos) => (
+          <TextInput
+            label='Introdueix les teues dades'
+            key={pos}
+            placeholder={elem}
+            placeholderTextColor={estil === 'florida' ? 'white' : 'orange'}
+            textColor={estil === 'florida' ? 'white' : 'orange'}
+            left={<TextInput.Icon icon="eye" />}
+          ></TextInput>
         ))}
       </View>
     );
-  }
+  };
 
   const nom = (textAMostrar, estilText) => {
     return (
       <Text style={estilText}>{textAMostrar}</Text>
     );
-  }
+  };
 
   return (
     <PaperProvider>
@@ -64,6 +79,9 @@ const App = () => {
         {nom("Ausiàs", estilText)}
       </View>
       {dades(elemsTextInput, estil, styles)}
+      <View>
+        {button(isAdmin)}
+      </View>
     </PaperProvider>
   );
 }
