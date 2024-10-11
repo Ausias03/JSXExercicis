@@ -1,11 +1,12 @@
 import { PaperProvider, Text, TextInput } from 'react-native-paper';
+import { View } from 'react-native';
 import { useState } from 'react';
 
 const App = () => {
   const elemsTextInput = [
     'Email',
     'Nom'
-  ]
+  ];
 
   const estilText = {
     fontWeight: 'bold',
@@ -13,11 +14,31 @@ const App = () => {
     fontSize: 35,
   };
 
+  const styles = {
+    upv: {
+      backgroundColor: 'purple',
+      fontSize: 10,
+      fontWeight: '600',
+      padding: 4,
+      paddingLeft: 12,
+      textAlign: 'left',
+      color: 'grey',
+    },
+    florida: {
+      backgroundColor: 'red',
+      fontSize: 12,
+      fontWeight: '600',
+      padding: 4,
+      paddingRight: 12,
+      textAlign: 'right',
+    }
+  }
+
   const dades = (arrayElements) => {
     return (
       arrayElements.map((elem, pos) => (
         <TextInput label={elem} key={pos} placeholder={elem}></TextInput>
-      ))     
+      ))
     );
   }
 
@@ -29,8 +50,12 @@ const App = () => {
 
   return (
     <PaperProvider>
-      {nom("Ausiàs", estilText)}
-      {dades(elemsTextInput)}
+      <View>
+        {nom("Ausiàs", estilText)}
+      </View>
+      <View>
+        {dades(elemsTextInput)}
+      </View>
     </PaperProvider>
   );
 }
