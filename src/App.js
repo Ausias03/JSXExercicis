@@ -36,17 +36,21 @@ const App = () => {
 
   const estil = 'upv';
 
-  const isAdmin = true;
+  const isAdmin = false;
 
-  const button = (isAdmin) => {
+  const moduls2Dam = [
+    { nom: 'DIN', professor: 'Manel', hores: 120 },
+    { nom: 'ADA', professor: 'Roberto', hores: 120 },
+    { nom: 'PMDM', professor: 'Paco', hores: 100 },
+    { nom: 'PSP', professor: 'Roberto', hores: 60 },
+    { nom: 'SGE', professor: 'Belén', hores: 100 },
+    { nom: 'Anglés', professor: 'Caterina', hores: 40 },
+    { nom: 'EIE', professor: 'Ana', hores: 60 },
+  ];
+
+  const nom = (textAMostrar, estilText) => {
     return (
-      isAdmin &&
-      <Button
-        icon='format-list-bulleted'
-        mode='contained'
-        buttonColor='#6200ee'
-        style={{ borderRadius: 5 }}
-      >INFORMES</Button>
+      <Text style={estilText}>{textAMostrar}</Text>
     );
   };
 
@@ -67,9 +71,31 @@ const App = () => {
     );
   };
 
-  const nom = (textAMostrar, estilText) => {
+  const button = (isAdmin) => {
     return (
-      <Text style={estilText}>{textAMostrar}</Text>
+      isAdmin &&
+      <Button
+        icon='format-list-bulleted'
+        mode='contained'
+        buttonColor='#6200ee'
+        style={{ borderRadius: 5 }}
+      >INFORMES</Button>
+    );
+  };
+
+  const llistat = (array) => {
+    return (
+      array.map((elem, pos) => (
+        <View
+          key={pos}
+          style={{ backgroundColor: pos % 2 == 0 ? '#F48FB1' : '#F8BBD0'}}
+        >
+          <Text>{pos + 1}</Text>
+          <Text>{elem.nom}</Text>
+          <Text>{elem.professor}</Text>
+          <Text>{elem.hores}</Text>
+        </View>
+      ))
     );
   };
 
@@ -82,6 +108,7 @@ const App = () => {
       <View>
         {button(isAdmin)}
       </View>
+      {llistat(moduls2Dam)}
     </PaperProvider>
   );
 }
