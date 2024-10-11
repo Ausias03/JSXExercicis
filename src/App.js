@@ -32,7 +32,9 @@ const App = () => {
       paddingRight: 12,
       textAlign: 'right',
     }
-  }
+  };
+
+  const estil = 'florida';
 
   const dades = (arrayElements) => {
     return (
@@ -53,7 +55,7 @@ const App = () => {
       <View>
         {nom("Ausiàs", estilText)}
       </View>
-      <View>
+      <View style={estil === 'florida' ? styles.florida : styles.upv}>
         {dades(elemsTextInput)}
       </View>
     </PaperProvider>
