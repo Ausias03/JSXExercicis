@@ -36,9 +36,10 @@ const App = () => {
 
   const estil = 'florida';
 
-  const dades = (arrayElements, estil) => {
+  const dades = (arrayElements, estil, stylesContainer) => {
     return (
-      arrayElements.map((elem, pos) => (
+      <View style={estil === 'florida' ? stylesContainer.florida : stylesContainer.upv}>
+      {arrayElements.map((elem, pos) => (
         <TextInput
           label={elem}
           key={pos}
@@ -46,7 +47,8 @@ const App = () => {
           placeholderTextColor={estil === 'florida' ? 'white' : 'orange'}
           textColor={estil === 'florida' ? 'white' : 'orange'}
         ></TextInput>
-      ))
+        ))}
+      </View>
     );
   }
 
@@ -61,9 +63,7 @@ const App = () => {
       <View>
         {nom("Ausiàs", estilText)}
       </View>
-      <View style={estil === 'florida' ? styles.florida : styles.upv}>
-        {dades(elemsTextInput, estil)}
-      </View>
+      {dades(elemsTextInput, estil, styles)}
     </PaperProvider>
   );
 }
