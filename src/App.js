@@ -1,4 +1,4 @@
-import { PaperProvider, Text, Switch } from 'react-native-paper';
+import { PaperProvider, Text, TextInput } from 'react-native-paper';
 
 const App = () => {
   const estilText = {
@@ -6,6 +6,12 @@ const App = () => {
     color: '#13802e',
     fontSize: 40,
   };
+
+  const dades = () => {
+    return (
+      <TextInput></TextInput>
+    );
+  }
 
   const nom = (textAMostrar, estilText) => {
     return (
@@ -16,6 +22,7 @@ const App = () => {
   return (
     <PaperProvider>
       {nom("Ausiàs", estilText)}
+      {dades()}
     </PaperProvider>
   );
 }
