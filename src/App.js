@@ -3,6 +3,8 @@ import { View } from 'react-native';
 import { useState } from 'react';
 
 const App = () => {
+  const [mostrarViews, setMostrarViews] = useState(false);
+
   const elemsTextInput = [
     'Email',
     'Nom'
@@ -36,7 +38,7 @@ const App = () => {
 
   const estil = 'upv';
 
-  const isAdmin = false;
+  const isAdmin = true;
 
   const moduls2Dam = [
     { nom: 'DIN', professor: 'Manel', hores: 120 },
@@ -47,6 +49,10 @@ const App = () => {
     { nom: 'Anglés', professor: 'Caterina', hores: 40 },
     { nom: 'EIE', professor: 'Ana', hores: 60 },
   ];
+
+  const ferViewsVisibles = () => {
+    setMostrarViews(!mostrarViews);
+  }
 
   const nom = (textAMostrar, estilText) => {
     return (
@@ -79,12 +85,14 @@ const App = () => {
         mode='contained'
         buttonColor='#6200ee'
         style={{ borderRadius: 5 }}
+        onPress={ferViewsVisibles}
       >INFORMES</Button>
     );
   };
 
   const llistat = (array) => {
     return (
+      mostrarViews &&
       array.map((elem, pos) => (
         <View
           key={pos}
